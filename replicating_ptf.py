@@ -57,11 +57,7 @@ def replication(S0, K, r, u, d, t, option_type):
     # Risk-free position
     B = (V_d - delta * S_d) / (1 + r)
 
-    # The value of the portfolio, that coincides with the price of the option, is given by
+    # The value of the portfolio, that under NA coincides with the price of the option, is given by
     # delta * S0 + B
     return delta, B
-#Example
-(d, b) = replication(S0 = 80, K = 100, r = 0.04, u = 1.2, d = 0.8, t = 3, option_type="call")
-S0 = 80
-price = d*S0 + b
 
