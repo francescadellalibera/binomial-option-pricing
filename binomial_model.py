@@ -1,8 +1,12 @@
 import math
-import sys
-print(sys.executable)
-#import numpy as np
 def binomial_option_price(S0, K, r, u, d, t, option_type):
+    # Pricing a European put or call derivative
+    # Check inputs
+    if d >= 1 + r or 1 + r >= u:
+        raise ValueError("No-arbitrage condition d < 1+r < u is not satisfied.")
+
+    if option_type not in ["call", "put"]:
+        raise ValueError("option_type must be 'call' or 'put'.")
 
     #Risk-free prob measure
     qu = ((1+r)-d)/(u-d)
@@ -37,5 +41,3 @@ def binomial_option_price(S0, K, r, u, d, t, option_type):
         option_values = new_values
     
     return option_values[0]
-s = binomial_option_price(100, 80, 0.05, 1.2, 0.8, 3, "put")
-print(s)
